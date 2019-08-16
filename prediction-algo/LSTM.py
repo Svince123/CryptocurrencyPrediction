@@ -21,7 +21,7 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 set_session(tf.Session(config=config))
 
-with h5py.File(''.join(['data/bitcoin2015to2017_close.h5']), 'r') as hf:
+with h5py.File(''.join(['bitcoin2015to2017_close.h5']), 'r') as hf:
     datas = hf['inputs'].value
     labels = hf['outputs'].value
 
@@ -47,7 +47,7 @@ validation_labels = labels[training_size:,:,0]
 
 #build model
 model = Sequential()
-model.add(CuDNNLSTM(units=units, activity_regularizer=regularizers.l1(reg), input_shape=(step_size,nb_features),return_sequences=False))
+model.add(LSTM(units=units, activity_regularizer=regularizers.l1(reg), input_shape=(step_size,nb_features),return_sequences=False))
 model.add(Activation('tanh'))
 model.add(Dropout(0.2))
 model.add(Dense(output_size))

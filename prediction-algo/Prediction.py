@@ -10,7 +10,7 @@ from keras.models import Model
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.callbacks import CSVLogger
 import tensorflow as tf
-from scipy.ndimage import imread
+#from scipy.ndimage import imread
 import numpy as np
 import random
 from keras.layers import LSTM
